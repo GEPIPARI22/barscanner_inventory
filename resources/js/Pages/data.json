@@ -1,0 +1,63 @@
+{
+  "Transport_Nr": "2884957",
+  "Datum": "28.12.2022",
+  "Barcode": "2884957",
+  "Palette": [
+    {
+      "Palette_Nr": "12216565",
+      "Barcode": "12216565",
+      "Artikels": [
+        {
+          "Art_Nr": "03276626",
+          "Werbung": "P 02.01",
+          "Menge": "5.000",
+          "Artikelbezeichnung": "G. ARTOS 0,75L Beerenperlue in halbtrocken 8%vol.",
+          "VE": "6",
+          "VK": "1.66",
+          "Gesamt_VK": "49,80",
+          "KG": "39,60",
+          "Barcode": "03276626"
+        },
+        {
+          "Art_Nr": "03278459",
+          "Werbung": "P 02.01",
+          "Menge": "1.000",
+          "Artikelbezeichnung": "Heidelbeerwein 0,745L Fl 8.5%vol.",
+          "VE": "6",
+          "VK": "2.22",
+          "Gesamt_VK": "13,32",
+          "KG": "39,60",
+          "Barcode": "03278459"
+        }
+      ]
+    },
+    {
+      "Palette_Nr": "12216490",
+      "Barcode": "12216490",
+      "Artikels": [
+        {
+          "Art_Nr": "09500878",
+          "Werbung": "P 02.01",
+          "Menge": "1.000",
+          "Artikelbezeichnung": "Meshball D30cm4fach sort.",
+          "VE": "4",
+          "VK": "4.44",
+          "Gesamt_VK": "17,76",
+          "KG": "1,36",
+          "Barcode": "09500878"
+        },
+        {
+          "Art_Nr": "14500104",
+          "Werbung": "P 02.01",
+          "Menge": "3.000",
+          "Artikelbezeichnung": "Drahtkorb mit weißer Tish platte D50 H40,5cm Mettal",
+          "VE": "4",
+          "VK": "24.95",
+          "Gesamt_VK": "299,40",
+          "KG": "40,68",
+          "Barcode": "14500104"
+        }
+      ]
+    }
+  ]
+}
