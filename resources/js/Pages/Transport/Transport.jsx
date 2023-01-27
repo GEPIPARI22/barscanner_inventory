@@ -1,14 +1,12 @@
-import InputLabel from '@/Components/InputLabel';
-import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import JsonData from "../data.json";
-import { Head } from '@inertiajs/inertia-react';
+import { Head, Link } from '@inertiajs/inertia-react';
 
 export default function Transport(props) {
-  /* const { data, setData, post, processing, errors, reset } = useForm({
+  const { data, setData, post, processing, errors, reset } = useForm({
     barscan: "",
     barcode: ""
-  }); */
+  });
 
 
 
@@ -28,29 +26,8 @@ export default function Transport(props) {
 
 
                         <form>
-                          <InputLabel
-                            forInput="barscan" value="Barscan"
-                          />
-                          <TextInput
-                            id="barscan"
-                            name="barscan"
-                            //value={data.name}
-                            className="mt-2"
-                            isFocused={true}
-                            //handleChange={onHandleChange}
-                            //required
-                          />
-                          <InputLabel
-                            forInput="barcode" value="Barcode"
-                          />
-                          <TextInput
-                            id="barcode"
-                            name="barcode"
-                            value={JsonData.Transport_Nr}
-                            className="mt-2"
-                            //handleChange={onHandleChange}
-                            //required
-                          />
+
+
                         </form>
 
 
