@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage, Link } from '@inertiajs/inertia-react';
 import { Inertia } from "@inertiajs/inertia";
 
-export default function Dashboard(props) {
+export default function WaresList(props) {
 
   const { wares } = usePage().props
 
@@ -63,7 +63,7 @@ export default function Dashboard(props) {
                                   Gesamt_VK,
                                   KG,
                                   Barcode
-                                }) => (
+                                  }) => (
                                     <tr>
                                         <td className="border px-4 py-2">{ id }</td>
                                         <td className="border px-4 py-2">{ Art_Nr }</td>

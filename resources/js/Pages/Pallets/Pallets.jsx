@@ -1,5 +1,4 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useEffect } from 'react';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -20,7 +19,7 @@ export default function Pallets(props) {
   const submit = (e) => {
     e.preventDefault();
 
-    (data.barscan === barcode.value) ? Inertia.get(route('transport')) : alert('Not god');
+    (data.barscan === Document.getElementById('Palette_Nr').innerHTML = value) ? Inertia.get(route('items')) : alert('Wrong', Inertia.get(route('pallets')));
 
   };
 
@@ -59,31 +58,43 @@ export default function Pallets(props) {
                                         value={data.barscan}
                                         className="mt-1 block w-full"
                                         handleChange={onHandleChange}
+                                        isFocused={true}
                                         required
                                     />
 
                                     <InputError message={errors.barscan} className="mt-2" />
                                 </div>
 
-                                <div className="mt-4">
-                                    <InputLabel forInput="barcode" value="Pallet" />
-
-                                    <TextInput
-                                        id="barcode"
-                                        type="text"
-                                        name="barcode"
-                                        value={JsonData.Palette_Nr}
-                                        className="mt-1 block w-full"
-                                    />
-
-                                </div>
-
                             </div>
+
+                            <table className="table-fixed w-full mt-6">
+                                <thead>
+                                    <tr className="bg-gray-100">
+                                        <th className="px-4 py-2">Id</th>
+                                        <th className="px-4 py-2">Palette_Nr</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {
+                                      JsonData.Palette.map((palette, index) =>{
+                                        return(
+                                          <tr key={index}>
+                                            <td className="border px-4 py-2">{ index+1 }</td>
+                                            <td className="border px-4 py-2" id='Palette_Nr'>{ palette.Palette_Nr }</td>
+                                          </tr>
+                                        )
+                                      })
+                                    }
+                                </tbody>
+                            </table>
+
+
                             <div className="flex items-center justify-end mt-4">
 
 
                                 <PrimaryButton className="ml-4" processing={processing}>
-                                    Go to pallets
+                                    Go to items
                                 </PrimaryButton>
                             </div>
 
@@ -94,3 +105,4 @@ export default function Pallets(props) {
         </AuthenticatedLayout>
     );
 }
+

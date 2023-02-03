@@ -1,5 +1,4 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useEffect } from 'react';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -20,7 +19,7 @@ export default function Transport(props) {
   const submit = (e) => {
     e.preventDefault();
 
-    (data.barscan === transport_nr.value) ? Inertia.get(route('pallets')) : alert('Wrong');
+    (data.barscan === transport_nr.value) ? Inertia.get(route('pallets')) : alert('Wrong', Inertia.get(route('transport')));
 
   };
 
@@ -59,6 +58,7 @@ export default function Transport(props) {
                                         value={data.barscan}
                                         className="mt-1 block w-full"
                                         handleChange={onHandleChange}
+                                        isFocused={true}
                                         required
                                     />
 

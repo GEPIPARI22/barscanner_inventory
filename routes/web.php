@@ -34,6 +34,10 @@ Route::get('/pallets', function () {
     return Inertia::render('Pallets/Pallets');
 })->middleware(['auth', 'verified'])->name('pallets');
 
+Route::get('/items', function () {
+    return Inertia::render('Items/Items');
+})->middleware(['auth', 'verified'])->name('items');
+
 Route::resource('wares', WareController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth']);
