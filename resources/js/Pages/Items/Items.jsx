@@ -1,11 +1,22 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import JsonData from "../data.json";
-import { Head, usePage, Link } from '@inertiajs/inertia-react';
+import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
+
+import TextInput from '@/Components/TextInput';
+import { Head, useForm, Link } from '@inertiajs/inertia-react';
 import { Inertia } from "@inertiajs/inertia";
 
 export default function ItemsList(props) {
 
-  const { wares } = usePage().props
+  const { data, setData, post, processing, errors} = useForm({
+    barscan: ''
+  });
+
+  const onHandleChange = (event) => {
+    setData(event.target.name, event.target.value);
+
+  };
 
     return (
         <AuthenticatedLayout
@@ -29,7 +40,30 @@ export default function ItemsList(props) {
                             </Link>
                         </div>
 
-                        <div></div>
+                        <div>
+                        <form>
+                            <div className="flex">
+
+                                <div className="mt-4">
+                                    <InputLabel forInput="barscan" value="Barscan" />
+
+                                    <TextInput
+                                        id="barscan"
+                                        type="text"
+                                        name="barscan"
+                                        value={data.barscan}
+                                        className="mt-1 block w-full"
+                                        handleChange={onHandleChange}
+                                        isFocused={true}
+                                        required
+                                    />
+
+                                    <InputError message={errors.barscan} className="mt-2" />
+                                </div>
+
+                            </div>
+                        </form>
+                        </div>
 
                             <table className="table-fixed w-full p-6">
                               <thead>
@@ -43,7 +77,6 @@ export default function ItemsList(props) {
                                       <th className="px-4 py-2">VK</th>
                                       <th className="px-4 py-2">Gesamt-VK</th>
                                       <th className="px-4 py-2">KG</th>
-                                      <th className="px-4 py-2">Barcode</th>
                                   </tr>
                               </thead>
 
@@ -51,16 +84,18 @@ export default function ItemsList(props) {
                                   {JsonData.Palette.map((item, index) => (
                                       <tr key={index}>
                                         <td className="border px-4 py-2">{ item.Palette_Nr }</td>
-                                        {item.Artikels.map((subitem, subindex) => (
+                                        {item.Artikels.filter((val) => {
+                                          return data.barscan === '' ? val : val.Art_Nr.includes(data.barscan);
+                                        }).map((subitem, subindex) => (
                                           <tr key={subindex}>
                                             <td className="border px-4 py-2">{ subitem.Art_Nr }</td>
                                             <td className="border px-4 py-2">{ subitem.Werbung }</td>
                                             <td className="border px-4 py-2">{ subitem.Menge }</td>
                                             <td className="border px-4 py-2">{ subitem.Artikelbezeichnung }</td>
-                                            {/* <td className="border px-4 py-2">{ subitem.VA }</td>
-                                            <td className="border px-4 py-2">{ subitem.VK }</td>
-                                            <td className="border px-4 py-2">{ subitem.Gesamt-VK }</td>
-                                            <td className="border px-4 py-2">{ subitem.KG }</td> */}
+                                            <td className="border px-4 py-2">{ subitem.Menge }</td>
+                                            <td className="border px-4 py-2">{ subitem.Menge }</td>
+                                            <td className="border px-4 py-2">{ subitem.Menge }</td>
+                                            <td className="border px-4 py-2">{ subitem.Menge }</td>
                                             <td className="border px-4 py-2">
                                             <Link
                                                 tabIndex="1"

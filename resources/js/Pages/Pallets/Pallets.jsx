@@ -6,6 +6,8 @@ import TextInput from '@/Components/TextInput';
 import JsonData from "../data.json";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, useForm, Link } from '@inertiajs/inertia-react';
+import axios from 'axios';
+import Items from '../Items/Items'
 
 export default function Pallets(props) {
   const { data, setData, post, processing, errors} = useForm({
@@ -14,14 +16,16 @@ export default function Pallets(props) {
 
   const onHandleChange = (event) => {
     setData(event.target.name, event.target.value);
+
   };
 
   const submit = (e) => {
     e.preventDefault();
 
-    (data.barscan === Document.getElementById('Palette_Nr').innerHTML = value) ? Inertia.get(route('items')) : alert('Wrong', Inertia.get(route('pallets')));
+    Inertia.get(route('items'))
 
   };
+
 
     return (
         <AuthenticatedLayout
@@ -46,7 +50,7 @@ export default function Pallets(props) {
                         </div>
 
                         <form onSubmit={submit}>
-                            <div className="flex flex-col">
+                            <div className="flex">
 
                                 <div className="mt-4">
                                     <InputLabel forInput="barscan" value="Barscan" />
@@ -67,6 +71,8 @@ export default function Pallets(props) {
 
                             </div>
 
+
+
                             <table className="table-fixed w-full mt-6">
                                 <thead>
                                     <tr className="bg-gray-100">
@@ -77,27 +83,28 @@ export default function Pallets(props) {
 
                                 <tbody>
                                     {
-                                      JsonData.Palette.map((palette, index) =>{
-                                        return(
-                                          <tr key={index}>
-                                            <td className="border px-4 py-2">{ index+1 }</td>
-                                            <td className="border px-4 py-2" id='Palette_Nr'>{ palette.Palette_Nr }</td>
-                                          </tr>
-                                        )
-                                      })
+                                        JsonData.Palette.filter((val) => {
+                                          return data.barscan === '' ? val : val.Palette_Nr.includes(data.barscan);
+                                        }).map((palette, index) =>{
+                                          return(
+                                            <tr key={index}>
+                                              <td className="border px-4 py-2">{ index+1 }</td>
+                                              <td className="border px-4 py-2">{ palette.Palette_Nr }</td>
+                                              <td>
+                                                <PrimaryButton className="ml-4" >
+                                                    Show detail
+                                                </PrimaryButton>
+                                              </td>
+                                            </tr>
+                                          )
+                                        })
                                     }
                                 </tbody>
                             </table>
 
-
                             <div className="flex items-center justify-end mt-4">
 
-
-                                <PrimaryButton className="ml-4" processing={processing}>
-                                    Go to items
-                                </PrimaryButton>
                             </div>
-
                         </form>
                     </div>
                 </div>
